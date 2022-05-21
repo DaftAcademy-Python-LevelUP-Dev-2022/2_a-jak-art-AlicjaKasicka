@@ -1,3 +1,6 @@
+from types import MethodType
+
+
 def greeter(func):
     def inner(*args):
         names = func(*args).split()
@@ -72,4 +75,9 @@ def format_output(*required_keys):
 
 
 def add_method_to_instance(klass):
-    pass
+    def real_decorator(func):
+        def wrapper(*args):
+            return func
+        setattr(klass, func.__name__, wrapper)
+        return wrapper
+    return real_decorator
