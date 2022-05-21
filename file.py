@@ -4,7 +4,7 @@ def greeter(func):
         string = "Aloha"
 
         for n in range(len(names)):
-            names[n] = " " + names[n].capitalize()
+            names[n] = " " + names[n].lower().capitalize()
             string += names[n]
         return string
     return inner
